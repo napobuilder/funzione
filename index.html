@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Básico -->
+    <title>FUNZIONE | Premium Boutique Interior Design Studio in Miami</title>
+    <meta name="description" content="FUNZIONE is a premium boutique interior design studio based in Miami. We create light-filled, emotionally resonant spaces with purpose and depth.">
+    <meta name="keywords" content="interior design, Miami interior designer, boutique design studio, luxury interiors, home refresh, office design, Agueda Del Giudice, architecture">
+    <meta name="author" content="FUNZIONE Interior Design">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://funzionedesign.com/">
+    
+    <!-- Etiquetas Hreflang (SEO Multi-idioma) -->
+    <link rel="alternate" hreflang="en" href="https://funzionedesign.com/" />
+    <link rel="alternate" hreflang="es" href="https://funzionedesign.com/es.html" />
+    <link rel="alternate" hreflang="x-default" href="https://funzionedesign.com/" />
+
+    <!-- Open Graph (Para compartir bonito en Facebook, LinkedIn, WhatsApp) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://funzionedesign.com/">
+    <meta property="og:title" content="FUNZIONE | Premium Boutique Interior Design Studio">
+    <meta property="og:description" content="FUNZIONE is a premium boutique interior design studio based in Miami. We create light-filled, emotionally resonant spaces.">
+    <meta property="og:image" content="https://i.imgur.com/eY9u2Nj.png">
+    <meta property="og:site_name" content="FUNZIONE">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://funzionedesign.com/">
+    <meta name="twitter:title" content="FUNZIONE | Premium Boutique Interior Design Studio">
+    <meta name="twitter:description" content="FUNZIONE is a premium boutique interior design studio based in Miami. We create light-filled, emotionally resonant spaces.">
+    <meta name="twitter:image" content="https://i.imgur.com/eY9u2Nj.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/intake.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            sea: '#058C42',      
+                            muted: '#1A1A1A',    
+                            isabellini: '#F4F0EA',
+                            silver: '#B8B8B8',   
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Raleway', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    },
+                    letterSpacing: {
+                        'tight-custom': '-0.03em',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: theme('colors.brand.isabellini');
+            color: theme('colors.brand.muted');
+        }
+
+        /* Animación para textos */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1), 
+                        transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .is-visible .reveal-up, .reveal-up.is-visible {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+        /* Efecto Linterna Hero */
+        #dark-mask {
+            --x: -1000px;
+            --y: -1000px;
+            -webkit-mask-image: radial-gradient(circle 250px at var(--x) var(--y), transparent 0%, rgba(0,0,0,0.2) 20%, rgba(0,0,0,0.6) 50%, black 90%);
+            mask-image: radial-gradient(circle 250px at var(--x) var(--y), transparent 0%, rgba(0,0,0,0.2) 20%, rgba(0,0,0,0.6) 50%, black 90%);
+            will-change: mask-image, -webkit-mask-image;
+        }
+
+        /* Animación Pergamino (Unroll) con Máscara */
+        .reveal-unroll {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .reveal-unroll::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #F4F0EA;
+            transform-origin: bottom;
+            transition: transform 1.6s cubic-bezier(0.19, 1, 0.22, 1);
+            transition-delay: var(--delay, 0s);
+            z-index: 2;
+        }
+
+        .reveal-unroll.is-visible::after {
+            transform: scaleY(0);
+        }
+
+        /* Efecto Zoom Moderno para todas las imágenes */
+        .img-zoom-container img {
+            transition: transform 1.5s cubic-bezier(0.2, 1, 0.3, 1);
+            will-change: transform;
+        }
+
+        .img-zoom-container:hover img {
+            transform: scale(1.12);
+        }
+
+        .nav-item { position: relative; }
+        .nav-item::after {
+            content: ''; position: absolute; bottom: -4px; left: 0; width: 0%; height: 1px;
+            background-color: currentColor; transition: width 0.3s ease;
+        }
+        .nav-item:hover::after { width: 100%; }
+
+        .content-fade { transition: opacity 0.6s ease; }
+
+        /* Fix para glitch visual de capas e intermitencia en Safari/Móviles */
+        .safari-fix {
+            transform: translate3d(0, 0, 0);
+            -webkit-transform: translate3d(0, 0, 0);
+        }
+
+        /* Ocultar barra de desplazamiento en los carruseles horizontales */
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Cursor zoom-in sobre fotos del portfolio */
+        #port-slider-track img { cursor: zoom-in; }
+
+        /* ── Lightbox Modal ── */
+        #lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(10, 10, 10, 0.96);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        #lightbox.lb-open {
+            opacity: 1;
+            pointer-events: all;
+        }
+        #lightbox-img {
+            max-width: 90vw;
+            max-height: 90vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            border: none;
+            transform: scale(0.94);
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+            opacity: 0;
+            will-change: transform;
+        }
+        #lightbox.lb-open #lightbox-img {
+            transform: scale(1);
+            opacity: 1;
+        }
+        .lb-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.25s ease, transform 0.25s ease;
+            backdrop-filter: blur(8px);
+        }
+        .lb-btn:hover { background: rgba(255,255,255,0.18); }
+        #lb-prev { left: 20px; }
+        #lb-next { right: 20px; }
+        #lb-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.25s ease;
+            backdrop-filter: blur(8px);
+            z-index: 10001;
+        }
+        #lb-close:hover { background: rgba(255,255,255,0.22); }
+        #lb-counter {
+            position: absolute;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.45);
+            font-family: 'Raleway', sans-serif;
+            font-size: 11px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        /* Mobile: ocultar flechas, usar swipe */
+        @media (max-width: 767px) {
+            .lb-btn { display: none; }
+            #lb-close { width: 52px; height: 52px; top: 16px; right: 16px; }
+            #lightbox-img { max-width: 96vw; max-height: 85vh; }
+            #lb-counter { bottom: 16px; }
+        }
+    </style>
+</head>
+<body class="antialiased font-sans overflow-x-hidden">
+
+    <!-- Sección 1: Hero -->
+    <!-- Se usó h-[100dvh] para evitar glitches con la barra de navegación del móvil -->
+    <section id="hero" class="sticky top-0 z-0 w-full h-[100dvh] bg-brand-muted text-brand-isabellini flex flex-col p-4 md:p-8">
+        <div class="absolute inset-0 z-0 overflow-hidden bg-brand-muted">
+            <img src="assets/images/portada-hero.jpeg" alt="Luxury interior design living room and architectural spaces by FUNZIONE" class="w-full h-full object-cover">
+            <div id="dark-mask" class="absolute inset-0 pointer-events-none">
+                <div class="absolute inset-0 bg-brand-muted opacity-[35%]"></div>
+                <div class="absolute inset-0 bg-brand-sea opacity-20"></div>
+            </div>
+        </div>
+
+        <header class="relative z-10 flex justify-between items-center py-4 px-4 md:px-8 border-b border-brand-isabellini/20">
+            <img src="https://i.imgur.com/uCTPigh.png" alt="FUNZIONE Interior Design Studio Logo" class="h-8 md:h-10 w-auto object-contain transition-transform duration-700 hover:scale-110" style="filter: brightness(0) invert(1);">
+            <nav class="hidden md:flex gap-8 text-[11px] uppercase tracking-[0.15em]">
+                <a href="#about" class="nav-item">About</a>
+                <a href="#portfolio" class="nav-item">Portfolio</a>
+                <a href="#services" class="nav-item">Services</a>
+                <a href="#contact" class="nav-item">Contact</a>
+            </nav>
+            <div class="flex items-center gap-4 md:gap-8">
+                <!-- Language Switcher -->
+                <div class="text-[10px] uppercase tracking-[0.2em] flex gap-2 items-center opacity-90">
+                    <span class="font-bold border-b border-brand-isabellini pb-0.5 pointer-events-none">EN</span>
+                    <span class="opacity-40">|</span>
+                    <a href="es.html" class="hover:opacity-100 opacity-60 transition-opacity pb-0.5">ES</a>
+                </div>
+                <a href="#contact" class="text-[11px] uppercase tracking-[0.15em] nav-item hidden md:block">Contact Us</a>
+            </div>
+        </header>
+
+        <div class="relative z-10 flex-grow flex flex-col justify-center items-center text-center px-4 mt-8">
+            <div class="w-[45vw] sm:w-[35vw] max-w-[350px] mb-4 md:mb-8 reveal-up flex flex-col items-center gap-2" style="transition-delay: 0.1s;">
+                <img src="assets/images/logo-funzione-hero.png" alt="FUNZIONE Architecture and Interior Design Studio Brand Mark" class="w-full h-auto object-contain transition-transform duration-1000 hover:scale-105" style="filter: brightness(0) invert(1); transform: translateZ(0); backface-visibility: hidden;">
+                <p class="text-[9px] md:text-[13px] uppercase tracking-[0.25em] text-brand-isabellini/80 font-medium text-center">Interior Design Studio</p>
+            </div>
+            <h1 class="text-[5vw] sm:text-4xl md:text-6xl lg:text-[65px] leading-none md:leading-[0.8] font-serif font-light mb-6 md:mb-8 text-brand-isabellini">
+                <span class="block reveal-up uppercase tracking-tight-custom" style="transition-delay: 0.3s;">ARCHITECT <span class="font-sans font-light opacity-60">&bull;</span></span>
+                <span class="block reveal-up italic normal-case text-[8vw] sm:text-5xl md:text-7xl lg:text-[90px] my-0 md:-my-2 tracking-tight-custom relative z-10" style="transition-delay: 0.5s;">Interior</span>
+                <span class="block reveal-up uppercase tracking-tight-custom" style="transition-delay: 0.7s;">DESIGNER</span>
+            </h1>
+            <div class="flex flex-col md:flex-row items-center gap-6 lg:gap-8 mt-0 reveal-up" style="transition-delay: 0.9s;">
+                <div class="text-[13px] md:text-[15px] font-sans font-light max-w-sm text-center md:text-left leading-relaxed text-brand-isabellini/90">
+                    We design beyond aesthetics<br>
+                    We create spaces that truly<br>
+                    work for your life<br>
+                    <span class="block mt-3 text-[11px] md:text-[12px] uppercase tracking-widest font-bold text-brand-isabellini/70">Residential * Commercial</span>
+                </div>
+                <a href="#contact" class="group/btn flex items-center gap-4 text-[12px] uppercase tracking-[0.2em] hover:text-brand-sea transition-colors text-brand-isabellini">
+                    Contact Us <span class="transform group-hover/btn:translate-x-2 transition-transform">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección 2: About Us -->
+    <section id="about" class="relative z-10 bg-brand-isabellini pt-24 pb-48 md:pb-[40vh] px-6 md:px-16 lg:px-24 shadow-[0_-20px_50px_rgba(0,0,0,0.1)] safari-fix">
+        <div class="max-w-[1400px] mx-auto">
+            <div class="text-[11px] uppercase tracking-[0.2em] mb-12 text-brand-sea font-bold reveal-up">About Us</div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16 items-start">
+                
+                <div class="flex flex-col">
+                    <div class="img-zoom-container reveal-unroll w-full max-w-[320px] aspect-[4/5] mb-10 bg-brand-silver/10" style="--delay: 0.1s;">
+                        <img src="https://i.imgur.com/KEYkUXD.jpeg" alt="Agueda Del Giudice - Founder and Principal Interior Designer at FUNZIONE" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="reveal-up" style="transition-delay: 0.3s;">
+                        <h2 class="font-serif font-light leading-[0.85] text-brand-muted mb-6 uppercase">
+                            <span class="block text-5xl md:text-6xl tracking-tight-custom mb-1">AGUEDA</span>
+                            <span class="block italic text-6xl md:text-7xl tracking-tight-custom normal-case">Del Giudice</span>
+                        </h2>
+                        <span class="text-[10px] uppercase tracking-[0.2em] text-brand-muted/40 font-semibold mb-8 block">FOUNDER & PRINCIPAL</span>
+                    </div>
+                    <div class="reveal-up" style="transition-delay: 0.4s;">
+                        <p class="text-[16px] md:text-[18px] font-serif leading-relaxed text-brand-muted mb-6">At Funzione Design Studio, we believe that design doesn't begin with a style, but with the lives of the people who inhabit the space.</p>
+                        <p class="text-[14px] font-sans font-light leading-relaxed text-brand-muted/70 mb-8">We are an architecture and interior design studio dedicated to creating deeply personalized spaces. Every decision stems from a true understanding of our clients: their lifestyle, routines, family dynamics, surroundings, and everything else that shapes their daily lives.</p>
+                    </div>
+                    <div class="reveal-up" style="transition-delay: 0.5s;">
+                        <a href="#portfolio" class="inline-flex items-center gap-4 text-[12px] uppercase tracking-[0.2em] border-b border-brand-muted/20 pb-1 hover:text-brand-sea hover:border-brand-sea transition-colors font-medium">Discover More <span>→</span></a>
+                    </div>
+                </div>
+
+                <div class="lg:pt-12">
+                    <div class="img-zoom-container reveal-unroll w-full h-[480px] md:h-[580px] bg-brand-muted/5" style="--delay: 0.4s;">
+                        <img src="assets/images/about 1.webp" alt="Minimalist architectural detail highlighting textures and natural light" class="w-full h-full object-cover">
+                    </div>
+                    <div class="mt-12 md:mt-16 reveal-up" style="transition-delay: 0.5s;">
+                        <p class="text-[14px] font-sans font-light leading-relaxed text-brand-muted/70 mb-6">Our process begins with a thorough exploration—not just of the space itself, but of the people within it. We analyze the context, the climate, and the existing architecture, seamlessly blending this information with the tastes, moods, materials, colors, and inspirations that resonate with each individual client.</p>
+                        <p class="text-[14px] font-sans font-light leading-relaxed text-brand-muted/70">We firmly believe that a space can be visually stunning, but if it fails to meet the real needs of the people living in it, it will eventually lose its value over time.</p>
+                    </div>
+                </div>
+
+                <div class="lg:pt-4">
+                    <div class="img-zoom-container reveal-unroll w-full h-[380px] md:h-[450px] bg-brand-muted/5" style="--delay: 0.7s;">
+                        <img src="assets/images/about 2.webp" alt="Serene luxury bedroom interior design with contemporary furniture" class="w-full h-full object-cover">
+                    </div>
+                    <div class="mt-12 md:mt-16 reveal-up" style="transition-delay: 0.8s;">
+                        <p class="text-[14px] font-sans font-light leading-relaxed text-brand-muted/70 mb-6">That is why, in every project, <strong class="font-semibold text-brand-muted">FUNZIONE</strong> is the guiding principle behind everything we do. We design spaces that don't just look good—they work, they feel right, and they endure. These are spaces meant to be lived in, tailored to each unique lifestyle, and developed through a highly personal, meticulous, and mindful process.</p>
+                        <div class="border-l-2 border-brand-sea pl-6 mt-10">
+                            <p class="text-[16px] md:text-[18px] font-serif leading-[1.2] text-brand-muted mb-2">At Funzione Design Studio, we don't design simply to impress.</p>
+                            <p class="text-[16px] md:text-[18px] font-serif leading-[1.2] text-brand-muted italic">We design to transform the way you experience your space.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección 3: Teaser Portafolio -->
+    <section class="sticky top-0 z-20 h-[100dvh] w-full bg-brand-muted flex flex-col items-center justify-center text-center overflow-hidden shadow-[0_-20px_50px_rgba(0,0,0,0.3)]">
+        <div class="absolute inset-0 z-0 overflow-hidden">
+            <img src="https://i.imgur.com/JHMRgiK.jpeg" alt="Conceptual background for selected interior design projects" class="w-full h-full object-cover transition-transform duration-[3000ms] hover:scale-110">
+            <div class="absolute inset-0 bg-brand-muted opacity-70"></div>
+            <div class="absolute inset-0 bg-brand-sea opacity-20"></div>
+        </div>
+        <div class="relative z-10 px-6 reveal-up">
+            <div class="text-[11px] uppercase tracking-[0.3em] mb-8 text-brand-isabellini/40">Selected Projects</div>
+            <h2 class="text-5xl md:text-8xl font-serif text-brand-isabellini tracking-tight-custom leading-none transition-all duration-700 hover:tracking-widest">
+                LASTING <br> <span class="italic text-6xl md:text-9xl">Impressions</span>
+            </h2>
+        </div>
+    </section>
+
+    <!-- Sección 4: Portafolio -->
+    <section id="portfolio" class="relative z-30 bg-brand-isabellini py-32 md:py-48 px-6 md:px-16 lg:px-24 safari-fix">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-center mb-16 border-b border-brand-muted/10 pb-8 reveal-up">
+                 <div id="port-counter" class="text-[10px] uppercase tracking-[0.2em] font-medium">Portfolio / 01</div>
+                 <div id="port-loc" class="text-[10px] uppercase tracking-[0.2em] font-medium transition-opacity duration-500">Mallorca, 2024</div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                <div class="lg:col-span-6">
+                    <div id="port-img-container" class="reveal-unroll aspect-[4/5] bg-brand-muted/5 relative group overflow-hidden" style="--delay: 0s;">
+                        <div id="port-slider-track" class="w-full h-full flex overflow-x-auto snap-x snap-mandatory scrollbar-hide scroll-smooth">
+                        </div>
+                        
+                        <!-- Flechas internas del visor (Desktop) -->
+                        <button class="port-slide-prev absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 z-10 hover:bg-white/40 xl:-translate-x-4 xl:group-hover:translate-x-0" aria-label="Previous photo">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" stroke-width="1.5"></path></svg>
+                        </button>
+                        <button class="port-slide-next absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 z-10 hover:bg-white/40 xl:translate-x-4 xl:group-hover:translate-x-0" aria-label="Next photo">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-width="1.5"></path></svg>
+                        </button>
+
+                        <div id="port-slider-dots" class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2.5 z-10 transition-opacity duration-300">
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-6 lg:pl-16">
+                    <h3 id="port-title" class="content-fade text-5xl md:text-7xl font-serif text-brand-muted mb-8 tracking-tight-custom uppercase leading-none">Serra <br> Niche</h3>
+                    <p id="port-desc" class="content-fade text-[16px] text-brand-muted/70 font-sans font-light leading-relaxed mb-12 max-w-md">
+                        Mediterranean calm and sculptural tactility. Muted tones and raw textures shape a serene atmosphere.
+                    </p>
+                    <div class="flex flex-col gap-4">
+                        <div class="text-[10px] uppercase tracking-widest text-brand-muted/50 flex items-center gap-4">
+                            <span class="h-px bg-brand-muted/20 flex-1"></span>
+                            Change Project
+                            <span class="h-px bg-brand-muted/20 flex-1"></span>
+                        </div>
+                        <div class="flex gap-4 justify-center md:justify-start mt-2">
+                            <button id="prev-project" class="group h-14 px-6 rounded-full border border-brand-muted/20 flex items-center justify-center gap-3 hover:border-brand-sea hover:text-brand-sea transition-all duration-300" aria-label="Previous Project">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" class="group-hover:-translate-x-1 transition-transform"><path d="M15 19l-7-7 7-7" stroke-width="1.5"></path></svg>
+                                <span class="text-[11px] uppercase tracking-[0.2em] font-medium hidden md:block">Prev</span>
+                            </button>
+                            <button id="next-project" class="group h-14 px-6 rounded-full bg-brand-muted text-brand-isabellini flex items-center justify-center gap-3 hover:bg-brand-sea transition-all duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.1)] hover:shadow-[0_10px_30px_rgba(110,135,119,0.3)]" aria-label="Next Project">
+                                <span class="text-[11px] uppercase tracking-[0.2em] font-medium hidden md:block">Next</span>
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" class="group-hover:translate-x-1 transition-transform"><path d="M9 5l7 7-7 7" stroke-width="1.5"></path></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección 5: Nuestros Servicios -->
+    <section id="services" class="relative z-30 bg-brand-isabellini py-32 md:py-48 px-6 md:px-16 lg:px-24 border-t border-brand-muted/5 safari-fix">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-24 reveal-up">
+                <div class="text-[11px] uppercase tracking-[0.4em] mb-4 text-brand-sea font-bold">Experiences</div>
+                <h2 class="text-4xl md:text-6xl font-serif text-brand-muted tracking-tight-custom">Our Services</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 items-start">
+                
+                <!-- Package 01: Discovery Session -->
+                <div class="flex flex-col group">
+                    <div class="img-zoom-container reveal-unroll aspect-[4/5] mb-10 bg-brand-muted/5" style="--delay: 0.1s;">
+                        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80" alt="Discovery Session - Interior design consultation by FUNZIONE" class="w-full h-full object-cover">
+                    </div>
+                    <div class="reveal-up" style="transition-delay: 0.3s;">
+                        <div class="text-[10px] uppercase tracking-[0.3em] text-brand-sea font-bold mb-3">01</div>
+                        <h3 class="text-2xl font-serif mb-2 text-brand-muted group-hover:text-brand-sea transition-colors duration-500">Discovery Session</h3>
+                        <p class="text-[12px] text-brand-muted/60 font-light leading-relaxed mb-6">A deep, personalized conversation to understand your project, your space, and your vision.</p>
+                        <div class="h-px w-full bg-brand-muted/10 mb-6"></div>
+                        <ul class="space-y-2.5 mb-6">
+                            <li class="flex items-start gap-3 text-[12px] text-brand-muted/70 font-light leading-snug">
+                                <span class="text-brand-sea flex-shrink-0 mt-0.5">—</span>
+                                <span>1:1 meeting — virtual or in-person</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-[12px] text-brand-muted/70 font-light leading-snug">
+                                <span class="text-brand-sea flex-shrink-0 mt-0.5">—</span>
+                                <span>Space analysis: measurements, plans & photos</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-[12px] text-brand-muted/70 font-light leading-snug">
+                                <span class="text-brand-sea flex-shrink-0 mt-0.5">—</span>
+                                <span>Personalized style & lifestyle questionnaire</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-[12px] text-brand-muted/70 font-light leading-snug">
+                                <span class="text-brand-sea flex-shrink-0 mt-0.5">—</span>
+                                <span>Inspiration board &amp; aesthetic direction review</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-[12px] text-brand-muted/70 font-light leading-snug">
+                                <span class="text-brand-sea flex-shrink-0 mt-0.5">—</span>
+                                <span>Contractor assessment &amp; project road map</span>
+                            </li>
+                        </ul>
+                        <p class="text-[10px] uppercase tracking-wider text-brand-muted/35 mb-8">* In-person visits include a travel fee quoted separately</p>
+                        <div class="flex justify-between items-center mb-8">
+                            <span class="text-[11px] uppercase tracking-widest text-brand-muted/50">Starting at</span>
+                            <span class="text-lg font-serif text-brand-muted">$120</span>
+                        </div>
+                        <a href="#contact" data-service="Discovery Session" data-package="01" class="btn-reservar inline-block w-full py-4 text-center bg-brand-muted text-brand-isabellini text-[11px] uppercase tracking-[0.2em] hover:bg-brand-sea transition-all duration-500">Book Now</a>
+                    </div>
+                </div>
+
+                <!-- Package 02: Conceptual Design -->
+                <div class="flex flex-col group">
+                    <div class="img-zoom-container reveal-unroll aspect-[4/5] mb-10 bg-brand-muted/5" style="--delay: 0.3s;">
+                        <img src="assets/images/moodboard.webp" alt="Conceptual Design - Mood board and full design presentation by FUNZIONE" class="w-full h-full object-cover">
+                    </div>
+                    <div class="reveal-up" style="transition-delay: 0.5s;">
+                        <div class="text-[10px] uppercase tracking-[0.3em] text-brand-sea font-bold mb-3">02</div>
+                        <h3 class="text-2xl font-serif mb-2 text-brand-muted group-hover:text-brand-sea transition-colors duration-500">Conceptual Design</h3>
+                        <p class="text-[12px] text-brand-muted/60 font-light leading-relaxed mb-6">The complete visual and strategic development of your space — with every detail curated for you.</p>
+                        <div class="h-px w-full bg-brand-muted/10 mb-6"></div>
+                        <ul class="space-y-2.5 mb-6">
+                            <li class="flex items-start gap-3 text-[12px] text-brand-muted/70 font-light leading-snug">
+                                <span class="text-brand-sea flex-shrink-0 mt-0.5">—</span>
+                                <span>Professional mood board &amp; color palette</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-[12px] text-brand-muted/70 font-light leading-snug">
+                                <span class="text-brand-sea flex-shrink-0 mt-0.5">—</span>
+                                <span>Materials, furniture &amp; décor selection</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-[12px] text-brand-muted/70 font-light leading-snug">
+                                <span class="text-brand-sea flex-shrink-0 mt-0.5">—</span>
+                                <span>Real shopping list with direct purchase links</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-[12px] text-brand-muted/70 font-light leading-snug">
+                                <span class="text-brand-sea flex-shrink-0 mt-0.5">—</span>
+                                <span>Full design presentation (PDF)</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-[12px] text-brand-muted/70 font-light leading-snug">
+                                <span class="text-brand-sea flex-shrink-0 mt-0.5">—</span>
+                                <span>1:1 personal accompaniment throughout the process</span>
+                            </li>
+                        </ul>
+                        <p class="text-[10px] uppercase tracking-wider text-brand-muted/35 mb-8">* Per space — up to 2 revision rounds included<br>* In-person visits include a travel fee quoted separately</p>
+                        <div class="flex justify-between items-center mb-8">
+                            <span class="text-[11px] uppercase tracking-widest text-brand-muted/50">Per Space</span>
+                            <span class="text-lg font-serif text-brand-muted">$400</span>
+                        </div>
+                        <a href="#contact" data-service="Conceptual Design" data-package="02" class="btn-reservar inline-block w-full py-4 text-center bg-brand-muted text-brand-isabellini text-[11px] uppercase tracking-[0.2em] hover:bg-brand-sea transition-all duration-500">Book Now</a>
+                    </div>
+                </div>
+
+                <!-- Package 03: Full Design + 3D -->
+                <div class="flex flex-col group">
+                    <div class="img-zoom-container reveal-unroll aspect-[4/5] mb-10 bg-brand-muted/5" style="--delay: 0.5s;">
+                        <img src="https://i.imgur.com/BicXMxm.jpeg" alt="Full Design + 3D Visualization - Complete interior design experience by FUNZIONE" class="w-full h-full object-cover">
+                    </div>
+                    <div class="reveal-up" style="transition-delay: 0.7s;">
+                        <div class="text-[10px] uppercase tracking-[0.3em] text-brand-sea font-bold mb-3">03</div>
+                        <h3 class="text-2xl font-serif mb-2 text-brand-muted group-hover:text-brand-sea transition-colors duration-500">Full Design + 3D</h3>
+                        <p class="text-[12px] text-brand-muted/60 font-light leading-relaxed mb-6">The complete design experience — from the first conversation to a photorealistic vision of your finished space.</p>
+                        <div class="h-px w-full bg-brand-muted/10 mb-6"></div>
+                        <ul class="space-y-2.5 mb-6">
+                            <li class="flex items-start gap-3 text-[12px] text-brand-muted/70 font-light leading-snug">
+                                <span class="text-brand-sea flex-shrink-0 mt-0.5">—</span>
+                                <span>Everything included in Packages 01 &amp; 02</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-[12px] text-brand-muted/70 font-light leading-snug">
+                                <span class="text-brand-sea flex-shrink-0 mt-0.5">—</span>
+                                <span>Full 3D space modeling</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-[12px] text-brand-muted/70 font-light leading-snug">
+                                <span class="text-brand-sea flex-shrink-0 mt-0.5">—</span>
+                                <span>2–3 photorealistic renders</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-[12px] text-brand-muted/70 font-light leading-snug">
+                                <span class="text-brand-sea flex-shrink-0 mt-0.5">—</span>
+                                <span>Post-render adjustments included</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-[12px] text-brand-muted/70 font-light leading-snug">
+                                <span class="text-brand-sea flex-shrink-0 mt-0.5">—</span>
+                                <span>Full 1:1 accompaniment — concept to final delivery</span>
+                            </li>
+                        </ul>
+                        <p class="text-[10px] uppercase tracking-wider text-brand-muted/35 mb-8">* Per space — up to 2 revision rounds on design &amp; renders<br>* In-person visits include a travel fee quoted separately</p>
+                        <div class="flex justify-between items-center mb-8">
+                            <span class="text-[11px] uppercase tracking-widest text-brand-muted/50">Per Space</span>
+                            <span class="text-lg font-serif text-brand-muted">$950</span>
+                        </div>
+                        <a href="#contact" data-service="Full Design + 3D" data-package="03" class="btn-reservar inline-block w-full py-4 text-center bg-brand-muted text-brand-isabellini text-[11px] uppercase tracking-[0.2em] hover:bg-brand-sea transition-all duration-500">Book Now</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección 6: Formulario de Contacto -->
+    <section id="contact" class="relative z-30 bg-white py-16 md:py-24 px-6 md:px-16 lg:px-24 border-t border-brand-muted/5 safari-fix">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+            
+            <!-- Izquierda: Textos -->
+            <div class="lg:pr-12">
+                <div class="text-[10px] uppercase tracking-[0.2em] text-brand-muted/50 mb-4 reveal-up">Contact Us</div>
+                <h2 class="font-serif text-brand-muted leading-[0.9] mb-6 reveal-up" style="transition-delay: 0.1s;">
+                    <span class="block text-2xl md:text-3xl uppercase tracking-tight-custom mb-2">Let's begin a</span>
+                    <span class="block text-4xl md:text-5xl lg:text-[50px] xl:text-[56px] uppercase tracking-tight-custom italic">Conversation</span>
+                </h2>
+                <p class="text-[13px] md:text-[14px] text-brand-muted/70 font-sans font-light leading-relaxed max-w-sm reveal-up" style="transition-delay: 0.2s;">
+                    Tell us more about your space, your ideas, and your aspirations. We will guide you through the next steps with care and intention.
+                </p>
+            </div>
+
+            <!-- Derecha: Formulario -->
+            <div class="w-full pt-2 md:pt-4">
+                <div data-fs-success class="hidden text-brand-sea font-bold mb-4">Thanks for your message! We'll be in touch soon.</div>
+                <div data-fs-error class="hidden text-red-500 font-bold mb-4">Oops! There was a problem submitting your form.</div>
+                <form id="contact-form" class="space-y-6 md:space-y-8">
+                    <div class="relative reveal-up" style="transition-delay: 0.2s;">
+                        <input type="text" name="name" id="name" placeholder="Name" data-fs-field required class="w-full bg-transparent border-b border-brand-muted/30 py-2 md:py-3 text-brand-muted placeholder:text-brand-muted/50 focus:outline-none focus:border-brand-muted transition-colors text-sm font-light">
+                        <span data-fs-error="name" class="text-xs text-red-500"></span>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                        <div class="relative reveal-up" style="transition-delay: 0.3s;">
+                            <input type="tel" name="phone" id="phone" placeholder="Phone" data-fs-field class="w-full bg-transparent border-b border-brand-muted/30 py-2 md:py-3 text-brand-muted placeholder:text-brand-muted/50 focus:outline-none focus:border-brand-muted transition-colors text-sm font-light">
+                            <span data-fs-error="phone" class="text-xs text-red-500"></span>
+                        </div>
+                        <div class="relative reveal-up" style="transition-delay: 0.4s;">
+                            <input type="email" name="email" id="email" placeholder="Email" required data-fs-field class="w-full bg-transparent border-b border-brand-muted/30 py-2 md:py-3 text-brand-muted placeholder:text-brand-muted/50 focus:outline-none focus:border-brand-muted transition-colors text-sm font-light">
+                            <span data-fs-error="email" class="text-xs text-red-500"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="relative reveal-up" style="transition-delay: 0.5s;">
+                        <textarea name="message" id="message" placeholder="Message" required data-fs-field class="w-full bg-transparent border border-brand-muted/30 p-3 md:p-4 h-24 md:h-32 text-brand-muted placeholder:text-brand-muted/50 focus:outline-none focus:border-brand-muted transition-colors text-sm font-light resize-none"></textarea>
+                        <span data-fs-error="message" class="text-xs text-red-500"></span>
+                    </div>
+                    
+                    <div class="reveal-up pt-2" style="transition-delay: 0.6s;">
+                        <button type="submit" data-fs-submit-btn class="group flex items-center gap-4 text-[11px] uppercase tracking-[0.2em] text-brand-muted border-b border-brand-muted pb-2 font-bold hover:text-brand-sea hover:border-brand-sea transition-all w-max disabled:opacity-50">
+                            Send Request <span class="transform group-hover:translate-x-2 transition-transform font-normal">→</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+        <button id="lb-close" aria-label="Close">
+            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <button class="lb-btn" id="lb-prev" aria-label="Previous image">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" stroke-width="1.5"/></svg>
+        </button>
+        <img id="lightbox-img" src="" alt="Portfolio image full view">
+        <button class="lb-btn" id="lb-next" aria-label="Next image">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-width="1.5"/></svg>
+        </button>
+        <div id="lb-counter"></div>
+    </div>
+
+    <!-- Sección 7: Footer Estilo Editorial -->
+    <footer class="relative z-30 bg-brand-isabellini pt-16 pb-8 px-6 md:px-16 lg:px-24 border-t border-brand-muted/10 safari-fix">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-6 mb-12">
+            
+            <!-- Col 1: Logo -->
+            <div class="lg:col-span-3 flex flex-col items-start reveal-up">
+                <img src="https://i.imgur.com/uCTPigh.png" alt="FUNZIONE Design Studio Footer Logo" class="h-4 md:h-5 object-contain mb-6" style="filter: brightness(0);">
+            </div>
+            
+            <!-- Col 2: Menu -->
+            <div class="lg:col-span-3 reveal-up" style="transition-delay: 0.1s;">
+                <h4 class="text-[9px] uppercase tracking-[0.2em] text-brand-muted/40 mb-4 font-semibold">Menu</h4>
+                <ul class="space-y-3 text-[10px] font-bold uppercase tracking-[0.1em] text-brand-muted">
+                    <li><a href="#about" class="hover:text-brand-sea transition-colors">About</a></li>
+                    <li><a href="#portfolio" class="hover:text-brand-sea transition-colors">Portfolio</a></li>
+                    <li><a href="#services" class="hover:text-brand-sea transition-colors">Services</a></li>
+                    <li><a href="https://hub.funzionedesign.com" class="hover:text-brand-sea transition-colors">Journal</a></li>
+                </ul>
+            </div>
+            
+            <!-- Col 3: Redes Sociales -->
+            <div class="lg:col-span-3 reveal-up" style="transition-delay: 0.2s;">
+                <h4 class="text-[9px] uppercase tracking-[0.2em] text-brand-muted/40 mb-4 font-semibold">Follow Us</h4>
+                <ul class="space-y-3 text-[10px] font-bold uppercase tracking-[0.1em] text-brand-muted">
+                    <li><a href="https://www.instagram.com/funzionedesign/" target="_blank" rel="noopener noreferrer" class="hover:text-brand-sea transition-colors">Instagram</a></li>
+                </ul>
+            </div>
+            
+            <!-- Col 4: Contacto Detalles -->
+            <div class="lg:col-span-3 reveal-up" style="transition-delay: 0.3s;">
+                <h4 class="text-[9px] uppercase tracking-[0.2em] text-brand-muted/40 mb-4 font-semibold">Contact</h4>
+                <div class="space-y-3 text-[10px] font-bold uppercase tracking-[0.1em] text-brand-muted leading-relaxed">
+                    <p>Miami, Florida</p>
+                    <p class="mt-3"><a href="tel:+19542031900" class="hover:text-brand-sea transition-colors">+1 (954) 203-1900</a></p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Copyright & Legal -->
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-[9px] uppercase tracking-[0.2em] text-brand-muted/40 reveal-up" style="transition-delay: 0.4s;">
+            <div class="flex flex-col md:flex-row items-center gap-2 md:gap-6 text-center md:text-left">
+                <p>&copy; 2026 Funzione. All rights reserved.</p>
+                <span class="hidden md:block w-3 h-px bg-brand-muted/20"></span>
+                <p>Designed & Developed by <a href="https://www.napbak.dev/" target="_blank" rel="noopener noreferrer" class="font-bold hover:text-brand-sea transition-colors">napbak.dev</a></p>
+            </div>
+            <div class="flex gap-6 mt-6 md:mt-0">
+                <a href="#" class="hover:text-brand-muted transition-colors">Terms</a>
+                <a href="#" class="hover:text-brand-muted transition-colors">Privacy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Intersection Observer para Animaciones
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { threshold: 0.05 });
+            
+            document.querySelectorAll('.reveal-up, .reveal-unroll').forEach((el) => observer.observe(el));
+
+            // Animación Hero Mouse Follow (Linterna)
+            const heroSection = document.getElementById('hero');
+            const darkMask = document.getElementById('dark-mask');
+            if (heroSection && darkMask) {
+                let currentX = -1000, currentY = -1000, targetX = -1000, targetY = -1000;
+                const animateLight = () => {
+                    currentX += (targetX - currentX) * 0.08;
+                    currentY += (targetY - currentY) * 0.08;
+                    darkMask.style.setProperty('--x', `${currentX}px`);
+                    darkMask.style.setProperty('--y', `${currentY}px`);
+                    requestAnimationFrame(animateLight);
+                };
+                animateLight();
+                heroSection.addEventListener('mousemove', (e) => {
+                    const rect = heroSection.getBoundingClientRect();
+                    targetX = e.clientX - rect.left; targetY = e.clientY - rect.top;
+                });
+                heroSection.addEventListener('mouseleave', () => { targetX = -1000; targetY = -1000; });
+            }
+
+            // Lógica del Slider de Portafolio
+            const projects = [
+                { 
+                    title: "Luray <br> Project", 
+                    loc: "Weston, FL", 
+                    images: [
+                        // Entrada
+                        "LURAY PROJECT-WESTON, FLorida/Luray Project-Weston FL/entrada 1.webp",
+                        "LURAY PROJECT-WESTON, FLorida/Luray Project-Weston FL/entrada 2.webp",
+                        // Bar
+                        "LURAY PROJECT-WESTON, FLorida/Luray Project-Weston FL/1 bar.webp",
+                        "LURAY PROJECT-WESTON, FLorida/Luray Project-Weston FL/2 bar.webp",
+                        "LURAY PROJECT-WESTON, FLorida/Luray Project-Weston FL/3 bar.webp",
+                        // Cocina
+                        "LURAY PROJECT-WESTON, FLorida/Luray Project-Weston FL/cocina 1.webp",
+                        "LURAY PROJECT-WESTON, FLorida/Luray Project-Weston FL/cocina 2.webp",
+                        "LURAY PROJECT-WESTON, FLorida/Luray Project-Weston FL/cocina 3.webp",
+                        "LURAY PROJECT-WESTON, FLorida/Luray Project-Weston FL/cocina 4.webp",
+                        "LURAY PROJECT-WESTON, FLorida/Luray Project-Weston FL/cocina 5.webp",
+                        // Laundry
+                        "LURAY PROJECT-WESTON, FLorida/Luray Project-Weston FL/laundry 1.webp",
+                        "LURAY PROJECT-WESTON, FLorida/Luray Project-Weston FL/laundry 2.webp",
+                        "LURAY PROJECT-WESTON, FLorida/Luray Project-Weston FL/laundry 3.webp",
+                        "LURAY PROJECT-WESTON, FLorida/Luray Project-Weston FL/laundry 4.webp",
+                        // Baño
+                        "LURAY PROJECT-WESTON, FLorida/Luray Project-Weston FL/verdadero 1 baño.webp",
+                        "LURAY PROJECT-WESTON, FLorida/Luray Project-Weston FL/2 baño (2).webp",
+                        "LURAY PROJECT-WESTON, FLorida/Luray Project-Weston FL/3 baño (2).webp",
+                        "LURAY PROJECT-WESTON, FLorida/Luray Project-Weston FL/4 baño (2).webp",
+                        "LURAY PROJECT-WESTON, FLorida/Luray Project-Weston FL/5 baño (2).webp",
+                        "LURAY PROJECT-WESTON, FLorida/Luray Project-Weston FL/6 baño.webp"
+                    ], 
+                    desc: "A perfect balance between modern luxury and natural warmth. In this project, we integrated organic textures, rich woods, and meticulous lighting to create everything from social areas designed for entertaining (such as its striking glass wine cellar) to bathrooms that serve as personal sanctuaries for unwinding. Designed not just to look good, but to transform everyday life." 
+                },
+                { 
+                    title: "Bathrooms <br> Projects", 
+                    loc: "Parkland | Boca Raton", 
+                    images: [
+                        "BATHROOMS PROJECTS-Parkland, Boca Ratón/Baño 1.1.webp",
+                        "BATHROOMS PROJECTS-Parkland, Boca Ratón/Baño 1.webp",
+                        "BATHROOMS PROJECTS-Parkland, Boca Ratón/Baño 2.1.webp",
+                        "BATHROOMS PROJECTS-Parkland, Boca Ratón/Baño 2.2.webp",
+                        "BATHROOMS PROJECTS-Parkland, Boca Ratón/Baño 2.3.webp",
+                        "BATHROOMS PROJECTS-Parkland, Boca Ratón/Baño 2.webp",
+                        "BATHROOMS PROJECTS-Parkland, Boca Ratón/Baño 3.1.webp",
+                        "BATHROOMS PROJECTS-Parkland, Boca Ratón/Baño 3.2.webp",
+                        "BATHROOMS PROJECTS-Parkland, Boca Ratón/Baño 3.webp",
+                        "BATHROOMS PROJECTS-Parkland, Boca Ratón/Baño 4.1.webp",
+                        "BATHROOMS PROJECTS-Parkland, Boca Ratón/Baño 4.webp",
+                        "BATHROOMS PROJECTS-Parkland, Boca Ratón/Baño 5.1.webp",
+                        "BATHROOMS PROJECTS-Parkland, Boca Ratón/Baño 5.webp"
+                    ], 
+                    desc: "Transforming the daily routine into an elevated experience. In this collection of bathroom projects across Parkland and Boca Raton, we applied our FUNZIONE principle to convert utilitarian spaces into personal sanctuaries.<br><br>We integrated a palette of noble materials—rich woods, elegant stones, and organic textures—with meticulous lighting to create environments that feel as good as they look. Each design is a direct response to the unique lifestyle of its inhabitants, seamlessly blending modern aesthetics with ultimate practicality. From rain showers to bespoke vanities, we design to transform the way you experience your most intimate space." 
+                },
+                { 
+                    title: "West Palm Beach <br> Project", 
+                    loc: "West Palm Beach, FL", 
+                    images: [
+                        "WEST PALM BEACH Fl/1.webp",
+                        "WEST PALM BEACH Fl/2.webp",
+                        "WEST PALM BEACH Fl/3.webp",
+                        "WEST PALM BEACH Fl/4.webp",
+                        "WEST PALM BEACH Fl/5.webp"
+                    ], 
+                    desc: "A complete residential design where every space was conceived as an extension of the way its inhabitants live, move, and feel at home.<br><br>From the sleek, light-filled kitchen — with its seamless integration of matte white cabinetry and warm wood accents — to a living room where a natural wood ceiling grounds a sun-drenched, open atmosphere. The social areas flow effortlessly from intimate to expansive: a curated media room anchored by a custom wood panel wall, an open-plan living and dining space alive with bold color and natural light, and a bathroom sanctuary finished in brushed gold fixtures and mosaic tile. A project designed not to impress, but to be fully lived in." 
+                }
+            ];
+            
+            let currentIndex = 0;
+            const imgContainer = document.getElementById('port-img-container');
+            const track = document.getElementById('port-slider-track');
+            const dotsContainer = document.getElementById('port-slider-dots');
+            const title = document.getElementById('port-title');
+            const desc = document.getElementById('port-desc');
+            const loc = document.getElementById('port-loc');
+            const counter = document.getElementById('port-counter');
+
+            if(track && dotsContainer) {
+                track.addEventListener('scroll', () => {
+                    const activeIndex = Math.round(track.scrollLeft / track.offsetWidth);
+                    Array.from(dotsContainer.children).forEach((dot, i) => {
+                        if(i === activeIndex) {
+                            dot.classList.replace('opacity-40', 'opacity-100');
+                            dot.classList.add('scale-125');
+                        } else {
+                            dot.classList.replace('opacity-100', 'opacity-40');
+                            dot.classList.remove('scale-125');
+                        }
+                    });
+                });
+            }
+
+            const slidePrevBtn = document.querySelector('.port-slide-prev');
+            const slideNextBtn = document.querySelector('.port-slide-next');
+            if(slidePrevBtn) slidePrevBtn.addEventListener('click', () => track.scrollBy({ left: -track.offsetWidth, behavior: 'smooth' }));
+            if(slideNextBtn) slideNextBtn.addEventListener('click', () => track.scrollBy({ left: track.offsetWidth, behavior: 'smooth' }));
+
+            function renderProject(index, animate) {
+                currentIndex = (index + projects.length) % projects.length;
+                const p = projects[currentIndex];
+                
+                if (animate) {
+                    imgContainer.classList.remove('is-visible');
+                    [title, desc, loc].forEach(el => el.style.opacity = '0');
+                }
+
+                const applyChanges = () => {
+                    track.innerHTML = '';
+                    dotsContainer.innerHTML = '';
+                    
+                    p.images.forEach((imgSrc, i) => {
+                        const slide = document.createElement('div');
+                        slide.className = 'w-full h-full flex-shrink-0 snap-center relative overflow-hidden';
+                        slide.innerHTML = `<img src="${imgSrc}" data-index="${i}" loading="lazy" alt="FUNZIONE Design" class="w-full h-full object-cover transition-transform duration-[1.5s] ease-out hover:scale-[1.12]">`;
+                        track.appendChild(slide);
+
+                        if(p.images.length > 1) {
+                            const dot = document.createElement('div');
+                            dot.className = `w-1.5 h-1.5 rounded-full bg-white transition-all duration-300 ${i === 0 ? 'opacity-100 scale-125' : 'opacity-40'}`;
+                            dotsContainer.appendChild(dot);
+                        }
+                    });
+                    
+                    track.scrollLeft = 0;
+                    title.innerHTML = p.title; 
+                    desc.innerHTML = p.desc; 
+                    loc.textContent = p.loc;
+                    counter.textContent = `Portfolio / 0${currentIndex + 1}`;
+
+                    if (animate) {
+                        setTimeout(() => {
+                            imgContainer.classList.add('is-visible');
+                            [title, desc, loc].forEach(el => el.style.opacity = '1');
+                        }, 50);
+                    }
+                };
+
+                animate ? setTimeout(applyChanges, 600) : applyChanges();
+            }
+            
+            document.getElementById('next-project').addEventListener('click', () => renderProject(currentIndex + 1, true));
+            document.getElementById('prev-project').addEventListener('click', () => renderProject(currentIndex - 1, true));
+            
+            renderProject(0, false);
+
+            // Lógica de auto-llenado del formulario de contacto
+            const btnReservarList = document.querySelectorAll('.btn-reservar');
+            const textareaMensaje = document.querySelector('textarea[name="message"]');
+
+            btnReservarList.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const serviceName = btn.getAttribute('data-service');
+                    const duration = btn.getAttribute('data-duration');
+                    
+                    if(textareaMensaje) {
+                        textareaMensaje.value = `Hello, I would love to book a ${serviceName} session for ${duration}. Let me tell you a bit about my space... \n\n`;
+                        
+                        // Enfoca el textarea después de que termine el scroll suave
+                        setTimeout(() => {
+                            textareaMensaje.focus();
+                        }, 800);
+                    }
+                });
+            });
+            // ── Lightbox Logic ──
+            const lightbox     = document.getElementById('lightbox');
+            const lbImg        = document.getElementById('lightbox-img');
+            const lbCounter    = document.getElementById('lb-counter');
+            const lbClose      = document.getElementById('lb-close');
+            const lbPrev       = document.getElementById('lb-prev');
+            const lbNext       = document.getElementById('lb-next');
+
+            let lbImages = [];   // array of src strings for current project
+            let lbIndex  = 0;    // currently shown image
+
+            function lbShow(index) {
+                lbIndex = (index + lbImages.length) % lbImages.length;
+                lbImg.style.opacity = '0';
+                lbImg.style.transform = 'scale(0.96)';
+                setTimeout(() => {
+                    lbImg.src = lbImages[lbIndex];
+                    lbImg.onload = () => {
+                        lbImg.style.opacity = '1';
+                        lbImg.style.transform = 'scale(1)';
+                    };
+                    // fallback for cached images
+                    if (lbImg.complete) { lbImg.style.opacity = '1'; lbImg.style.transform = 'scale(1)'; }
+                    lbCounter.textContent = `${lbIndex + 1} / ${lbImages.length}`;
+                }, 180);
+            }
+
+            function lbOpen(images, startIndex) {
+                lbImages = images;
+                document.body.style.overflow = 'hidden';
+                lightbox.classList.add('lb-open');
+                lbShow(startIndex);
+            }
+
+            function lbClose_fn() {
+                lightbox.classList.remove('lb-open');
+                document.body.style.overflow = '';
+                setTimeout(() => { lbImg.src = ''; }, 400);
+            }
+
+            lbClose.addEventListener('click', lbClose_fn);
+            lightbox.addEventListener('click', (e) => { if (e.target === lightbox) lbClose_fn(); });
+            lbPrev.addEventListener('click', (e) => { e.stopPropagation(); lbShow(lbIndex - 1); });
+            lbNext.addEventListener('click', (e) => { e.stopPropagation(); lbShow(lbIndex + 1); });
+            document.addEventListener('keydown', (e) => {
+                if (!lightbox.classList.contains('lb-open')) return;
+                if (e.key === 'Escape')      lbClose_fn();
+                if (e.key === 'ArrowLeft')   lbShow(lbIndex - 1);
+                if (e.key === 'ArrowRight')  lbShow(lbIndex + 1);
+            });
+
+            // Delegar click en el track del slider para abrir lightbox
+            track.addEventListener('click', (e) => {
+                const img = e.target.closest('img');
+                if (!img) return;
+                const idx = parseInt(img.dataset.index ?? '0', 10);
+                lbOpen(projects[currentIndex].images, idx);
+            });
+
+            // Swipe táctil (móvil)
+            let touchStartX = 0;
+            lightbox.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
+            lightbox.addEventListener('touchend', (e) => {
+                const delta = e.changedTouches[0].clientX - touchStartX;
+                if (Math.abs(delta) > 50) delta < 0 ? lbShow(lbIndex + 1) : lbShow(lbIndex - 1);
+            }, { passive: true });
+
+            // About photos lightbox
+            const aboutImagesSrc = ['about 1.webp', 'about 2.webp'];
+            document.querySelectorAll('#about .img-zoom-container img').forEach(img => {
+                const src = img.getAttribute('src');
+                if (src === 'about 1.webp' || src === 'about 2.webp') {
+                    img.style.cursor = 'zoom-in';
+                    img.addEventListener('click', () => {
+                        const idx = src === 'about 1.webp' ? 0 : 1;
+                        lbOpen(aboutImagesSrc, idx);
+                    });
+                }
+            });
+
+        });
+    </script>
+    <script>
+        window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+        formspree('initForm', { formElement: '#contact-form', formId: 'xvzdzrpv' });
+        
+        // Listen to formspree events to properly style success message natively
+        document.addEventListener('formspree-submit-success', function(e) {
+            if (e.target.id === 'contact-form') {
+                e.target.style.display = 'none';
+                document.querySelector('[data-fs-success]').classList.remove('hidden');
+                document.querySelector('[data-fs-error]').classList.add('hidden');
+            }
+        });
+        document.addEventListener('formspree-submit-error', function(e) {
+            if (e.target.id === 'contact-form') {
+                document.querySelector('[data-fs-error]').classList.remove('hidden');
+            }
+        });
+    </script>
+    <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+    <script src="assets/js/intake.js"></script>
+</body>
+</html>

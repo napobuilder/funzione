@@ -1,0 +1,408 @@
+/* Intake Form Modal Styles */
+
+#intake-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    /* Awwwards Glassmorphism effect */
+    background: rgba(244, 240, 234, 0.96);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    color: #1A1A1A;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(100%);
+    transition: transform 0.8s cubic-bezier(0.85, 0, 0.15, 1), opacity 0.8s cubic-bezier(0.85, 0, 0.15, 1);
+    font-family: 'Raleway', sans-serif;
+    overflow-y: auto; /* Fallback for mobile if height exceeds */
+}
+
+#intake-modal.intake-open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+/* Modal Header & Progress */
+.intake-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    position: relative;
+    z-index: 10;
+}
+
+@media (min-width: 768px) {
+    .intake-header {
+        padding: 2rem 3rem;
+    }
+}
+
+.intake-close {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(26, 26, 26, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: transparent;
+    color: #1A1A1A;
+}
+
+.intake-close:hover {
+    background: rgba(26, 26, 26, 0.05);
+    transform: scale(1.05);
+}
+
+.intake-progress {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.intake-progress-bar-bg {
+    width: 40px;
+    height: 2px;
+    background: rgba(26, 26, 26, 0.1);
+    position: relative;
+}
+
+@media (min-width: 768px) {
+    .intake-progress-bar-bg { width: 60px; }
+    .intake-progress { font-size: 11px; }
+}
+
+.intake-progress-bar-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: #058C42;
+    width: 0%;
+    transition: width 0.6s cubic-bezier(0.85, 0, 0.15, 1);
+}
+
+/* Steps Container */
+.intake-body {
+    flex: 1;
+    position: relative;
+    width: 100%;
+}
+
+.intake-step {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 2rem 1.5rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x: hidden;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(40px) scale(0.98);
+    transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Scrollbar sutil para los pasos */
+.intake-step::-webkit-scrollbar {
+    width: 4px;
+}
+.intake-step::-webkit-scrollbar-thumb {
+    background: rgba(26, 26, 26, 0.2);
+    border-radius: 4px;
+}
+
+@media (min-width: 768px) {
+    .intake-step {
+        padding: 2rem 3rem;
+    }
+}
+
+.intake-step.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+    z-index: 2;
+}
+
+.intake-step.past {
+    transform: translateY(-40px) scale(0.98);
+    opacity: 0;
+}
+
+/* Typography & Inputs */
+.intake-step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.25rem;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+    letter-spacing: -0.02em;
+    color: #1A1A1A;
+}
+
+@media (min-width: 768px) {
+    .intake-step-title {
+        font-size: 4rem;
+        margin-bottom: 3rem;
+    }
+}
+
+.intake-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(26, 26, 26, 0.2);
+    padding: 0.75rem 0;
+    font-size: 1.1rem;
+    color: #1A1A1A;
+    transition: border-color 0.3s ease;
+    font-family: inherit;
+    font-weight: 300;
+}
+
+@media (min-width: 768px) {
+    .intake-input {
+        padding: 1rem 0;
+        font-size: 1.5rem;
+    }
+}
+
+.intake-input:focus {
+    outline: none;
+    border-bottom-color: #1A1A1A;
+}
+
+.intake-input::placeholder {
+    color: rgba(26, 26, 26, 0.3);
+}
+
+/* Cards for Selection */
+.intake-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+}
+
+@media (min-width: 640px) {
+    .intake-cards-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+    }
+}
+
+.intake-card {
+    border: 1px solid rgba(26, 26, 26, 0.1);
+    padding: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    border-radius: 4px;
+}
+
+@media (min-width: 768px) {
+    .intake-card { padding: 2rem; gap: 1rem; }
+}
+
+.intake-card:hover {
+    border-color: rgba(26, 26, 26, 0.4);
+    background: #fff;
+    transform: translateY(-5px);
+}
+
+.intake-card.selected {
+    border-color: #058C42;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(5, 140, 66, 0.1);
+}
+
+.intake-card-title {
+    font-size: 1.1rem;
+    font-family: 'Playfair Display', serif;
+}
+
+@media (min-width: 768px) {
+    .intake-card-title { font-size: 1.25rem; }
+}
+
+/* Image Cards (Style Selection) */
+.intake-img-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+    .intake-img-cards {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+.intake-img-card {
+    position: relative;
+    aspect-ratio: 3/4;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    border-radius: 4px;
+}
+
+.intake-img-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.intake-img-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    transition: background 0.3s ease;
+}
+
+.intake-img-card:hover img {
+    transform: scale(1.05);
+}
+
+.intake-img-card:hover::after {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.intake-img-card.selected::after {
+    background: rgba(5, 140, 66, 0.3);
+    border: 3px solid #058C42;
+}
+
+@media (min-width: 768px) {
+    .intake-img-card.selected::after { border-width: 4px; }
+}
+
+.intake-img-card-label {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    color: #fff;
+    z-index: 2;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+    .intake-img-card-label {
+        font-size: 1.2rem;
+        bottom: 1.5rem;
+        left: 1.5rem;
+        right: 1.5rem;
+    }
+}
+
+/* Actions Footer */
+.intake-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    z-index: 10;
+}
+
+@media (min-width: 768px) {
+    .intake-footer { padding: 2rem 3rem; }
+}
+
+.intake-btn-nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-weight: 600;
+    color: #1A1A1A;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+@media (min-width: 768px) {
+    .intake-btn-nav { font-size: 11px; }
+}
+
+.intake-btn-nav:hover {
+    opacity: 0.7;
+}
+
+.intake-btn-nav:disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
+}
+
+.intake-btn-next,
+.intake-btn-submit {
+    background: #1A1A1A;
+    color: #F4F0EA;
+    padding: 0.8rem 1.5rem;
+    border-radius: 99px;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+@media (min-width: 768px) {
+    .intake-btn-next,
+    .intake-btn-submit {
+        padding: 1rem 2.5rem;
+        font-size: 11px;
+    }
+}
+
+.intake-btn-next:hover,
+.intake-btn-submit:hover {
+    background: #058C42;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(5, 140, 66, 0.2);
+}
+
+.intake-btn-next:disabled {
+    background: rgba(26, 26, 26, 0.2);
+    color: rgba(255, 255, 255, 0.5);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
